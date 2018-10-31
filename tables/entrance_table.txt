@@ -1,0 +1,8 @@
+tile_type,1
+tile_coordinates,2
+underworld,1
+area_index,1
+dest_x,1
+dest_y,1
+pan_x,2
+pan_y,2
