@@ -1,8 +1,11 @@
-tile_type,1
-tile_coordinates,2
+zone,1
+tile_x,1
+tile_y,1
 underworld,1
 area_index,1
 dest_x,1
 dest_y,1
-pan_x,2
-pan_y,2
+pan_x_high,1
+pan_x_low,1
+pan_y_high,1
+pan_y_low,1
