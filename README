@@ -1,0 +1,10 @@
+This randomizer has three flags.
+    e  Randomize entrances/exits - unsafe.
+    i  Randomize item pickups.
+    m  Randomize enemies.
+
+Some notes about entrance randomization:
+    -Randomizing entrances and exits may make the game uncompletable. The randomizer does naively attempt to connect everything together, but there are still cases where it may make mistakes.
+    -Entrances and exits are only randomized within a given stage.
+    -Death warping may take you to unexpected locations.
+    -If you select this flag, you are guaranteed to find a Missile and a Rope pickup in the first stage.
