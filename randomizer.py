@@ -20,12 +20,41 @@ ALL_OBJECTS = None
 DEBUG_MODE = False
 
 
-class ItemObject(TableObject): pass
+class ItemObject(TableObject):
+    flag = 'i'
+    flag_description = "item pickups"
+    randomselect_attributes = ["item_type"]
+
+    @property
+    def intershuffle_valid(self):
+        '''
+        01 - whole pizza
+        02 - half pizza
+        03 - quarter pizza
+        05 - shuriken
+        06 - 3x shuriken
+        07 - boomerang
+        08 - ninja scroll
+        0b - invincibility
+        0c - missile
+        0d - ropes
+        '''
+        if 'e' in get_flags():
+            return 0x1 <= self.item_type <= 0xf
+        else:
+            # omit missiles and ropes
+            return 0x1 <= self.item_type <= 0xb
+
+
 class EnemyObject(TableObject):
+    flag = 'm'
+    flag_description = "enemies"
     randomselect_attributes = ["enemy_type"]
 
 
 class EntranceObject(TableObject):
+    flag = 'e'
+    flag_description = "entrances/exits - unsafe"
     relink_attributes = [
          "underworld",
          "area_index",
@@ -258,6 +287,6 @@ if __name__ == "__main__":
         clean_and_write(ALL_OBJECTS)
         finish_interface()
 
-    except IOError, e:
+    except Exception, e:
         print "ERROR: %s" % e
         raw_input("Press Enter to close this program.")
