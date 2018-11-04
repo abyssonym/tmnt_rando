@@ -1,3 +1,4 @@
 EnemyObject             enemy_table.txt     enemy_pointers.txt
 EntranceObject          entrance_table.txt  entrance_pointers.txt
 ItemObject              item_table.txt      item_pointers.txt
+#.option     infinite_missiles.txt

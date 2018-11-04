@@ -45,6 +45,20 @@ class ItemObject(TableObject):
             # omit missiles and ropes
             return 0x1 <= self.item_type <= 0xb
 
+    @classmethod
+    def full_cleanup(cls):
+        if 'e' in get_flags():
+            rope_candidates = [i for i in ItemObject.every
+                               if 0x12d7a <= i.pointer <= 0x12da6]
+            if not any([i.item_type == 0xd for i in rope_candidates]):
+                chosen = random.choice(rope_candidates)
+                chosen.item_type = 0xd
+            rope_candidates.remove(chosen)
+            if not any([i.item_type == 0xc for i in rope_candidates]):
+                chosen = random.choice(rope_candidates)
+                chosen.item_type = 0xc
+        super(ItemObject, cls).full_cleanup()
+
 
 class EnemyObject(TableObject):
     flag = 'm'
