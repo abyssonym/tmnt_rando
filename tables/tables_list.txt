@@ -1,8 +1,3 @@
-#EnemyObject             enemy_table.txt     1aca9   56  pointdelimit 10010 2 255  first world only?
-EntranceObjectA         entrance_table.txt  1eb10   6   pointdelimit 10010 2 255
-EntranceObjectB         entrance_table.txt  1eb85   1   pointdelimit 10010 2 255
-EntranceObjectC         entrance_table.txt  1eb9e   7   pointdelimit 10010 2 255
-EntranceObjectD         entrance_table.txt  1ec37   17  pointdelimit 10010 2 255
-EntranceObjectE         entrance_table.txt  1eddf   9   pointdelimit 10010 2 255
-EntranceObjectF         entrance_table.txt  1ee73   4   pointdelimit 10010 2 255
-OverworldEntranceObject entrance_table.txt  1e86d   5   pointdelimit 10010 2 255
+EnemyObject             enemy_table.txt     enemy_pointers.txt
+EntranceObject          entrance_table.txt  entrance_pointers.txt
+ItemObject              item_table.txt      item_pointers.txt

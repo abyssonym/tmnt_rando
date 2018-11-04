@@ -20,6 +20,11 @@ ALL_OBJECTS = None
 DEBUG_MODE = False
 
 
+class ItemObject(TableObject): pass
+class EnemyObject(TableObject):
+    randomselect_attributes = ["enemy_type"]
+
+
 class EntranceObject(TableObject):
     relink_attributes = [
          "underworld",
@@ -249,30 +254,6 @@ if __name__ == "__main__":
                        and g not in [TableObject]]
 
         run_interface(ALL_OBJECTS, snes=False)
-        for e in EntranceObject.every:
-            print hex(e.index), hex(e.pointer), e.hierarchy_index, hex(e.zone), \
-                hex(e.full_loc_x), hex(e.full_loc_y), \
-                hex(e.full_dest_x), hex(e.full_dest_y), \
-                hex(e.area_index)
-
-        #e = EntranceObject.get(0x59)
-        #e2 = EntranceObject.get(0x56)
-        #for attr in ["area_index", "dest_x", "dest_y", "pan_x", "pan_y"]:
-        #    setattr(e, attr, getattr(e2, attr))
-
-        done_reverse = {}
-        for e in EntranceObject.every:
-            r = e.reverse_entrance
-            if r is None:
-                continue
-            if r in done_reverse:
-                print
-                print done_reverse[r]
-                print e
-                print r
-                import pdb; pdb.set_trace()
-            done_reverse[r] = e
-
 
         clean_and_write(ALL_OBJECTS)
         finish_interface()
