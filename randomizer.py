@@ -53,6 +53,9 @@ class ItemObject(TableObject):
             if not any([i.item_type == 0xd for i in rope_candidates]):
                 chosen = random.choice(rope_candidates)
                 chosen.item_type = 0xd
+            else:
+                chosen = random.choice([i for i in rope_candidates
+                                        if i.item_type == 0xd])
             rope_candidates.remove(chosen)
             if not any([i.item_type == 0xc for i in rope_candidates]):
                 chosen = random.choice(rope_candidates)
@@ -261,7 +264,7 @@ class EntranceObject(TableObject):
 
                 candidates = [c for c in candidates if c in valid_ents]
                 if not candidates:
-                    assert len(to_assign) >= 2 and not len(to_assign) % 2
+                    assert len(to_assign) >= 2
                     candidates = [c for c in sorted(to_assign)
                                   if c.is_overworld != chosen.is_overworld]
                     assert chosen not in candidates
@@ -282,6 +285,8 @@ class EntranceObject(TableObject):
                 if not to_assign:
                     break
 
+            assert (len(assignments) == len(set(assignments.values()))
+                == len(ents_ungrouped + ow_ents_ungrouped))
             for a, b in assignments.items():
                 a.link_other(b)
 
